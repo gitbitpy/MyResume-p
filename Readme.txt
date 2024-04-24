@@ -1,6 +1,6 @@
-Thanks for downloading this template!
+Hey!
+Welcome to the Portfolio of Ahmad Usman who is a web developer, IT enthusiast and an Engineer.
 
-Template Name: MyResume
-Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Here you will find the code to the first git hosted website that is live at https://ahmadusman.com/
+
+Do check it out!
