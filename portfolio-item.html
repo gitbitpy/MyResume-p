@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<HTML>
+   <head>
+    <title>Portfolio item</title>
+    <style>
+        .portfolio-wrap {
+            height:600px;
+            overflow:hidden;
+            width:650px;
+
+            padding:20px;
+            border-radius: 10px;
+        }
+        .portfolio-img-wrap{
+
+           display:grid;
+           grid-template-columns: repeat(2,minmax(0,1fr));
+           grid-gap:20px;
+           transform: rotate(-4deg) scale(1.1);
+           margin-top:60px;
+
+        }
+        .portfolio-img-wrap .img-1{
+            width:100%;
+            border-radius:10px;
+            box-shadow: 1px 1px 25px -5px rgb(39, 36, 36);
+            
+        }
+        .portfolio-img-wrap .img-2 {
+            width:100%;
+            z-index:3;
+            border-radius:10px;
+            box-shadow: 1px 1px 25px -5px rgb(39, 36, 36);
+        }
+        h4 {
+            font-size:40px;
+            color:rgb(44, 43, 43);
+            margin:0;
+        }
+        p {
+            color:rgb(15, 15, 15);
+            font-size:20px;
+        }
+        .icon-flex-title {
+            display:flex;
+            flex-direction:row;
+            align-items:center;
+            column-gap:10px;
+        }
+        .portfolio-icon {
+            width:20px;
+            
+        }
+        .portfolio-item a {
+            text-decoration: none;
+        }
+    </style>
+   </head>
+    <body>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-dir">
+            <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
+                <div class="portfolio-wrap" style="border:1px solid lightgrey;">
+                    <div class="portfolio-info">
+                        <div class="icon-flex-title">
+                            <img src="assets/img/portfolio/screencapture-alarazi-home-page.jpg" alt="" class="portfolio-icon">
+                            <h4>Alarazi.com</h4>
+                        </div>
+                        <p>Real Estate Solution</p>
+                    </div>
+                    <div class="portfolio-img-wrap">
+                        <img src="assets/img/portfolio/screencapture-alarazi-home-page.jpg" class="img-1" alt="">
+                        <img src="assets/img/portfolio/screencapture-alarazi-home-page.jpg" class="img-2" alt="">
+                    </div>  
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-serv">
+            <div class="portfolio-wrap" style="border:1px solid lightgrey;" >
+              <img src="assets/img/portfolio/screencapture-aweddingstory-nz-home-page.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>App 2</h4>
+                <p>App</p>
+                <div class="portfolio-links">
+                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                  <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </body>
+    
+</HTML>

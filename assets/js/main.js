@@ -1,11 +1,3 @@
-/**
-* Template Name: MyResume
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Updated: Mar 17 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 (function() {
   "use strict";
 
@@ -212,25 +204,8 @@
    */
   const portfolioDetailsLightbox = GLightbox({
     selector: '.portfolio-details-lightbox',
-    width: '90%',
-    height: '90vh'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
+    width: '100%',
+    height: '100vh'
   });
 
   /**
@@ -238,16 +213,17 @@
    */
   new Swiper('.testimonials-slider', {
     speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
+    loop: false,
+    autoplay: false,
     slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
+    navigation: {
+      nextEl: '.custom-swiper-button-next',
+      prevEl: '.custom-swiper-button-prev',
+      disabledClass: 'disabled_swiper_button'
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: false,
     }
   });
 
