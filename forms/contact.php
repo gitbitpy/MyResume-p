@@ -17,7 +17,7 @@ if (isset($_POST['email'])) {
     $email = $_POST['email']; // required
     $subject=$_POST['subject'];//required
     $message = $_POST['message']; // required
-    
+
     if (strlen($message) < 2) {
         $error_message .= 'Message should not be less than 2 characters<br>';
     }
@@ -43,7 +43,7 @@ if (isset($_POST['email'])) {
     $headers = 'From: ' . $email . "\r\n" .
         'Reply-To: ' . $email . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
-    @mail($email_to, $email_subject, $email_message, $headers);
+    mail($email_to, $email_subject, $email_message, $headers);
 ?>
     <script>
  const successMessages = document.querySelectorAll('.sent-message');
