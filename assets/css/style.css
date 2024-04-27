@@ -1217,6 +1217,10 @@ height:clamp(300px,45vh,500px);
   box-shadow: none;
   font-size: 14px;
 }
+.contact .php-email-form input.invalid,
+.contact .php-email-form textarea.invalid {
+  border:1px solid red;
+}
 
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email] {

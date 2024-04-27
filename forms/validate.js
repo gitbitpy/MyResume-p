@@ -1,51 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('.php-email-form');
+const form = document.querySelector("form[class='contact-form']");
+const nameInput = document.querySelector("input[name='name']");
+const emailInput = document.querySelector("input[name='email']");
+const phoneInput = document.querySelector("input[name='phone']");
+const messageInput = document.querySelector("textarea[name='message']");
 
-  form.addEventListener('submit', function() {
-      e.preventDefault(); // Prevent the default form submission behavior
+nameInput.isValid = () => !!nameInput.value;
+emailInput.isValid = () => isValidEmail(emailInput.value);
+phoneInput.isValid = () => isValidPhone(phoneInput.value);
+messageInput.isValid = () => !!messageInput.value;
 
-      // Get form input fields
-      const nameInput = form.querySelector('#name');
-      const emailInput = form.querySelector('#email');
-      const subjectInput = form.querySelector('#subject');
-      const messageInput = form.querySelector('textarea');
+const inputFields = [nameInput, emailInput, phoneInput, messageInput];
 
-      // Validate name field
-      if (nameInput.value.trim() === '') {
-          displayError('Please enter your name');
-          return;
-      }
+const isValidEmail = (email) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
 
-      // Validate email field
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailInput.value.trim())) {
-          displayError('Please enter a valid email address');
-          return;
-      }
+const isValidPhone = (phone) => {
+  const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  return re.test(String(phone).toLowerCase());
+};
 
-      // Validate subject field
-      if (subjectInput.value.trim() === '') {
-          displayError('Please enter a subject');
-          return;
-      }
+let shouldValidate = false;
+let isFormValid = false;
 
-      // Validate message field
-      if (messageInput.value.trim() === '') {
-          displayError('Please enter a message');
-          return;
-      }
+const validateInputs = () => {
+  console.log("we are here");
+  if (!shouldValidate) return;
 
-      // If all fields are valid, submit the form
-      form.submit();
+  isFormValid = true;
+  inputFields.forEach((input) => {
+    input.classList.remove("invalid");
+    input.nextElementSibling.classList.add("hide");
+
+    if (!input.isValid()) {
+      input.classList.add("invalid");
+      isFormValid = false;
+      input.nextElementSibling.classList.remove("hide");
+    }
   });
+};
 
-  function displayError(message) {
-      // Display error message
-      const errorMessageElement = form.querySelector('.error-message');
-      errorMessageElement.textContent = message;
-      errorMessageElement.classList.add('d-block');
-
-      // Hide other messages
-      form.querySelector('.sent-message').classList.remove('d-block');
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  shouldValidate = true;
+  validateInputs();
+  if (isFormValid) {
+    // TODO: DO AJAX REQUEST
   }
 });
+
+inputFields.forEach((input) => input.addEventListener("input", validateInputs));
