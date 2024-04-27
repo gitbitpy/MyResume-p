@@ -1,81 +1,51 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.php-email-form');
 
-(function () {
-  "use strict";
+  form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission behavior
 
-  let forms = document.querySelectorAll('.php-email-form');
+      // Get form input fields
+      const nameInput = form.querySelector('#name');
+      const emailInput = form.querySelector('#email');
+      const subjectInput = form.querySelector('#subject');
+      const messageInput = form.querySelector('textarea');
 
-  forms.forEach( function(e) {
-    e.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      let thisForm = this;
-
-      let action = thisForm.getAttribute('action');
-      let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
-      
-      if( ! action ) {
-        displayError(thisForm, 'The form action property is not set!');
-        return;
+      // Validate name field
+      if (nameInput.value.trim() === '') {
+          displayError('Please enter your name');
+          return;
       }
-      thisForm.querySelector('.loading').classList.add('d-block');
-      thisForm.querySelector('.error-message').classList.remove('d-block');
-      thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-      let formData = new FormData( thisForm );
-
-      if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
-          grecaptcha.ready(function() {
-            try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
-              .then(token => {
-                formData.set('recaptcha-response', token);
-                php_email_form_submit(thisForm, action, formData);
-              })
-            } catch(error) {
-              displayError(thisForm, error);
-            }
-          });
-        } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
-        }
-      } else {
-        php_email_form_submit(thisForm, action, formData);
+      // Validate email field
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+          displayError('Please enter a valid email address');
+          return;
       }
-    });
+
+      // Validate subject field
+      if (subjectInput.value.trim() === '') {
+          displayError('Please enter a subject');
+          return;
+      }
+
+      // Validate message field
+      if (messageInput.value.trim() === '') {
+          displayError('Please enter a message');
+          return;
+      }
+
+      // If all fields are valid, submit the form
+      form.submit();
   });
 
-  function php_email_form_submit(thisForm, action, formData) {
-    fetch(action, {
-      method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
-    })
-    .then(response => {
-      if( response.ok ) {
-        return response.text();
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
-      }
-    })
-    .then(data => {
-      thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
-        thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
-      } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
-      }
-    })
-    .catch((error) => {
-      displayError(thisForm, error);
-    });
-  }
+  function displayError(message) {
+      // Display error message
+      const errorMessageElement = form.querySelector('.error-message');
+      errorMessageElement.textContent = message;
+      errorMessageElement.classList.add('d-block');
 
-  function displayError(thisForm, error) {
-    thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
-    thisForm.querySelector('.error-message').classList.add('d-block');
+      // Hide other messages
+      form.querySelector('.sent-message').classList.remove('d-block');
   }
-
-})();
+});
