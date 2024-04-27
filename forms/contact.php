@@ -67,5 +67,17 @@ if (isset($_POST['email'])) {
         'Reply-To: ' . $email . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
     @mail($email_to, $email_subject, $email_message, $headers);
+?>
+    <script>
+ const successMessages = document.querySelectorAll('.sent-message');
+
+// Loop through each element in the NodeList
+successMessages.forEach(message => {
+  // Add the 'd-block' class to each element
+  message.classList.add('d-block');
+});
+ </script>
+    <?php
   }
+
 ?>
