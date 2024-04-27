@@ -192,6 +192,18 @@
 
   });
 
+/**
+ * Portfolio autoscroll images
+ */
+const scrollImages = document.querySelectorAll('.img-1,.img-2');
+
+// Iterate through each selected image
+scrollImages.forEach(scrollImg => {
+  let imgHeight = scrollImg.offsetHeight;
+  const transitionDuration = imgHeight *15;
+  scrollImg.style.animationDuration = transitionDuration + 'ms';
+})
+
   /**
    * Initiate portfolio lightbox 
    */

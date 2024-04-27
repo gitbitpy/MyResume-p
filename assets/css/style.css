@@ -379,7 +379,7 @@ section {
 .section-title h2 {
   font-size: clamp(25px,3.5vw,50px);
   font-weight: bold;
-  text-transform: ucapitalize;
+  text-transform: capitalize;
   margin-bottom: 30px;
   padding-bottom: 30px;
   position: relative;
@@ -759,10 +759,24 @@ height:clamp(300px,45vh,500px);
  margin-top:60px;
 
 }
+@keyframes con-scroll {
+  0%{
+  transform:translateY(0%);
+}
+50% {
+  transform:translateY(-50%);
+}
+100% {
+  transform:translateY(0%);
+}
+}
+
 .portfolio-img-wrap .img-1{
   width:100%;
   border-radius:10px;
   box-shadow: 1px 1px 25px -10px rgb(39, 36, 36);
+  animation:con-scroll alternate;
+  animation-delay: 1000ms;
   
 }
 .portfolio-img-wrap .img-2 {
@@ -771,6 +785,8 @@ height:clamp(300px,45vh,500px);
   border-radius:10px;
   box-shadow: 1px 1px 25px -10px rgb(39, 36, 36);
   margin-top:40px;
+  animation:con-scroll alternate;
+  animation-delay: 1000ms;
 }
 
 .icon-flex-title {
@@ -847,7 +863,12 @@ height:clamp(300px,45vh,500px);
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
-
+@media (min-width: 992px) {
+  .glightbox-clean .gclose {
+      opacity: .7;
+      right: 27px;
+  }
+}
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
