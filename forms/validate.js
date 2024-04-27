@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('.php-email-form');
 
-  form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the default form submission behavior
+  form.addEventListener('submit', function() {
+      e.preventDefault(); // Prevent the default form submission behavior
 
       // Get form input fields
       const nameInput = form.querySelector('#name');
