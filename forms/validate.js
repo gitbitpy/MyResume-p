@@ -22,11 +22,9 @@ const isValidEmail = (email) => {
   return re.test(String(phone).toLowerCase());
 };*/
 
-let shouldValidate = false;
 let isFormValid = false;
 
 const validateInputs = () => {
-  if (!shouldValidate) return;
 
   isFormValid = true;
   inputFields.forEach((input) => {
@@ -46,7 +44,6 @@ form.addEventListener("submit", (e) => {
     form.querySelector('.loading').classList.add('d-block');
     
     // Flag to determine if validation should occur
-    let shouldValidate = true;
     
     // Validate form inputs
     validateInputs();
