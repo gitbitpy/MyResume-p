@@ -67,6 +67,5 @@ if (isset($_POST['email'])) {
         'Reply-To: ' . $email . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
     @mail($email_to, $email_subject, $email_message, $headers);
-  return $error_message;
   }
 ?>
