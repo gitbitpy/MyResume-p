@@ -519,6 +519,10 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
+            
+            <?php 
+            include  'forms/contact.php';
+            ?>
 
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
