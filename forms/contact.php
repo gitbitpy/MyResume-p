@@ -6,6 +6,10 @@
 
 //Import PHPMailer class into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../PHPmailer/src/Exception.php';
+require '../PHPmailer/src/PHPMailer.php';
 
 //Don't run this unless we're handling a form submission
 if (array_key_exists('email', $_POST)) {
