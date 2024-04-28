@@ -524,7 +524,7 @@
             include  'forms/contact.php';
             ?>
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form  method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -588,7 +588,6 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="forms/validate.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
