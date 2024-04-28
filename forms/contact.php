@@ -19,7 +19,16 @@ if (array_key_exists('email', $_POST)) {
   date_default_timezone_set('Etc/UTC');
   $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
       strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-  //Create a new PHPMailer instance
+  
+      if (array_key_exists('name', $_POST)) {
+        //Limit length and strip HTML tags
+        $name = substr(strip_tags($_POST['name']), 0, 255);
+    } else {
+        $name = '';
+    }
+    
+      //Create a new PHPMailer instance
+  
   $mail = new PHPMailer();
   //Send using SMTP to localhost (faster and safer than using mail()) – requires a local mail server
   //See other examples for how to use a remote server such as gmail
