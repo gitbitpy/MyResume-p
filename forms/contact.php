@@ -8,7 +8,7 @@ require './PHPmailer/src/PHPMailer.php';
 require './PHPmailer/src/SMTP.php';
 date_default_timezone_set('Etc/UTC');
 
-if (isset($_POST['email'])) {
+if (array_key_exists('email', $_POST)) {
     date_default_timezone_set('Etc/UTC');
     $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
@@ -30,45 +30,46 @@ if (isset($_POST['email'])) {
     $mail->setFrom('hi@ahmadusman.com', (empty($name) ? 'Contact For Ahmad' : $name));
     $mail->addAddress('mirzaconnects@gmail.com');
     if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
-        $mail->Subject = 'PHPMailer contact form';
-        //Keep it simple - don't use HTML
-        $mail->isHTML(false);
-        //Build a simple message body
-        $mail->Body = <<<EOT
+      $mail->Subject = 'PHPMailer contact form';
+      //Keep it simple - don't use HTML
+      $mail->isHTML(false);
+      //Build a simple message body
+      $mail->Body = <<<EOT
 Email: {$_POST['email']}
 Name: {$_POST['name']}
-Message: {$_POST['text-message']}
+Message: {$_POST['message']}
 EOT;
 
-        //Send the message, check for errors
-        if (!$mail->send()) {
-            //The reason for failing to send will be in $mail->ErrorInfo
-            //but it's unsafe to display errors directly to users - process the error, log it on your server.
-            if ($isAjax) {
-                http_response_code(500);
-                $response = [
-                    "status" => false,
-                    "message" => 'Sorry, something went wrong. Please try again later.'
-                ];
-            }
-        } else {
-            $response = [
-                "status" => true,
-                "message" => 'Message sent! Thanks for contacting us.'
-            ];
-        }
-    } else {
-        $response = [
-            "status" => false,
-            "message" => 'Invalid email address, message ignored.'
-        ];
-    }
+      //Send the message, check for errors
+      if (!$mail->send()) {
+          //The reason for failing to send will be in $mail->ErrorInfo
+          //but it's unsafe to display errors directly to users - process the error, log it on your server.
+          if ($isAjax) {
+              http_response_code(500);
+          }
 
-    if ($isAjax) {
-        header('Content-type:application/json;charset=utf-8');
-        echo json_encode($response);
-        exit();
-    }
+          $response = [
+              "status" => false,
+              "message" => 'Sorry, something went wrong. Please try again later.'
+          ];
+      } else {
+          $response = [
+              "status" => true,
+              "message" => 'Message sent! Thanks for contacting us.'
+          ];
+      }
+  } else {
+      $response = [
+          "status" => false,
+          "message" => 'Invalid email address, message ignored.'
+      ];
+  }
+
+  if ($isAjax) {
+      header('Content-type:application/json;charset=utf-8');
+      echo json_encode($response);
+      exit();
+  }
 }
 ?>
 <h2 id="status-message"><?php if (isset($response)) {
