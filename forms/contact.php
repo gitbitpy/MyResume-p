@@ -27,16 +27,7 @@ if (isset($_POST['email'])) {
     //Set who the message is to be sent from
     $name = $_POST['name']; // You need to define $name variable
     $mail->setFrom('hi@ahmadusman.com', (empty($name) ? 'Contact For Ahmad' : $name));
-
-    //Choose who the message should be sent to
-    //You don't have to use a <select> like in this example, you can simply use a fixed address
-    //the important thing is *not* to trust an email address submitted from the form directly,
-    //as an attacker can substitute their own and try to use your form to send spam
-
     $mail->addAddress('mirzaconnects@gmail.com');
-    //Put the submitter's address in a reply-to header
-    //This will fail if the address provided is invalid,
-    //in which case we should ignore the whole request
     if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
         $mail->Subject = 'PHPMailer contact form';
         //Keep it simple - don't use HTML
@@ -79,3 +70,43 @@ EOT;
     }
 }
 ?>
+<h2 id="status-message"><?php if (isset($response)) {
+  echo $response['message'];
+                      }?></h2>
+<form method="POST" id="contact-form">
+  <label for="name">Name: <input type="text" name="name" id="name"></label><br>
+  <label for="email">Email address: <input type="email" name="email" id="email"></label><br>
+  <label for="message">Message: <textarea name="text-message" id="message" rows="8" cols="20"></textarea></label><br>
+  <input type="submit" value="Send">
+</form>
+
+<script type="application/javascript">
+  const form = document.getElementById("contact-form")
+
+  function email(data) {
+      const message = document.getElementById("status-message")
+      fetch("", {
+          method: "POST",
+          body: data,
+          headers: {
+             'X-Requested-With' : 'XMLHttpRequest'
+          }
+      })
+          .then(response => response.json())
+          .then(response => {message.innerHTML = response.message})
+          .catch(error => {
+              error.json().then(response => {
+                  message.innerHTML = response.message
+              })
+          })
+  }
+
+
+  const submitEvent = form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+
+      email(formData);
+  })
+</script>
