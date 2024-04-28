@@ -17,6 +17,7 @@ if (isset($_POST['email'])) {
     //Send using SMTP to localhost (faster and safer than using mail()) – requires a local mail server
     //See other examples for how to use a remote server such as gmail
     $mail->isSMTP();
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->Host = 'smtp.hostinger.com';
     $mail->Port = 465;
     $mail->SMTPAuth = true;
