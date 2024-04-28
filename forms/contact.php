@@ -19,7 +19,6 @@ if (array_key_exists('email', $_POST)) {
   date_default_timezone_set('Etc/UTC');
   $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
       strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-
   //Create a new PHPMailer instance
   $mail = new PHPMailer();
   //Send using SMTP to localhost (faster and safer than using mail()) – requires a local mail server
@@ -52,7 +51,7 @@ if (array_key_exists('email', $_POST)) {
       $mail->Body = <<<EOT
 Email: {$_POST['email']}
 Name: {$_POST['name']}
-Message: {$_POST['message']}
+Message: {$_POST['text-message']}
 EOT;
 
       //Send the message, check for errors
@@ -93,7 +92,7 @@ EOT;
 <form method="POST" id="contact-form">
   <label for="name">Name: <input type="text" name="name" id="name"></label><br>
   <label for="email">Email address: <input type="email" name="email" id="email"></label><br>
-  <label for="message">Message: <textarea name="message" id="message" rows="8" cols="20"></textarea></label><br>
+  <label for="message">Message: <textarea name="text-message" id="message" rows="8" cols="20"></textarea></label><br>
   <input type="submit" value="Send">
 </form>
 
