@@ -103,11 +103,11 @@ EOT;
   }
 
 
-  const submitEvent = form.addEventListener("submit", (event) => {
-      event.preventDefault();
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-      const formData = new FormData(form);
+    const formData = new FormData(form);
 
-      email(formData);
+    email(formData);
   })
 </script>
