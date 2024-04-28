@@ -1,0 +1,19 @@
+{
+    "name": "ahmad/resume",
+    "description": "Ahmad usman's resume",
+    "type": "projet",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ahmad\\Resume\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ahmadusman",
+            "email": "ahmadusman.5.au@gmail.com"
+        }
+    ]
+}
