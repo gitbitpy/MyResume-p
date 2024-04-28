@@ -1,114 +1,139 @@
 <?php
+
+/**
+ * This example shows how to handle a simple contact form safely.
+ */
+
+//Import PHPMailer class into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
 
-require './PHPmailer/src/Exception.php';
-require './PHPmailer/src/PHPMailer.php';
-require './PHPmailer/src/SMTP.php';
-date_default_timezone_set('Etc/UTC');
-
+//Don't run this unless we're handling a form submission
 if (array_key_exists('email', $_POST)) {
     date_default_timezone_set('Etc/UTC');
     $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
     //Create a new PHPMailer instance
     $mail = new PHPMailer();
     //Send using SMTP to localhost (faster and safer than using mail()) – requires a local mail server
     //See other examples for how to use a remote server such as gmail
     $mail->isSMTP();
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-    $mail->Host = 'smtp.hostinger.com';
-    $mail->Port = 465;
-    $mail->SMTPAuth = true;
-    //Username to use for SMTP authentication
-    $mail->Username = 'hi@ahmadusman.com';
-    //Password to use for SMTP authentication
-    $mail->Password = '989981122Q@z';
-    //Set who the message is to be sent from
-    $name = $_POST['name']; // You need to define $name variable
-    $mail->setFrom('hi@ahmadusman.com', (empty($name) ? 'Contact For Ahmad' : $name));
-    $mail->addAddress('mirzaconnects@gmail.com');
+    $mail->Host = 'localhost';
+    $mail->Port = 25;
+
+    //Use a fixed address in your own domain as the from address
+    //**DO NOT** use the submitter's address here as it will be forgery
+    //and will cause your messages to fail SPF checks
+    $mail->setFrom('from@example.com', 'First Last');
+    //Choose who the message should be sent to
+    //You don't have to use a <select> like in this example, you can simply use a fixed address
+    //the important thing is *not* to trust an email address submitted from the form directly,
+    //as an attacker can substitute their own and try to use your form to send spam
+    $addresses = [
+        'sales' => 'sales@example.com',
+        'support' => 'support@example.com',
+        'accounts' => 'accounts@example.com',
+    ];
+    //Validate address selection before trying to use it
+
+        //Fall back to a fixed address if dept selection is invalid or missing
+        $mail->addAddress('mirzaconnects@gmail.com');
+    
+    //Put the submitter's address in a reply-to header
+    //This will fail if the address provided is invalid,
+    //in which case we should ignore the whole request
     if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
-      $mail->Subject = 'PHPMailer contact form';
-      //Keep it simple - don't use HTML
-      $mail->isHTML(false);
-      //Build a simple message body
-      $mail->Body = <<<EOT
+        $mail->Subject = 'PHPMailer contact form';
+        //Keep it simple - don't use HTML
+        $mail->isHTML(false);
+        //Build a simple message body
+        $mail->Body = <<<EOT
 Email: {$_POST['email']}
 Name: {$_POST['name']}
 Message: {$_POST['message']}
 EOT;
 
-      //Send the message, check for errors
-      if (!$mail->send()) {
-          //The reason for failing to send will be in $mail->ErrorInfo
-          //but it's unsafe to display errors directly to users - process the error, log it on your server.
-          if ($isAjax) {
-              http_response_code(500);
-          }
+        //Send the message, check for errors
+        if (!$mail->send()) {
+            //The reason for failing to send will be in $mail->ErrorInfo
+            //but it's unsafe to display errors directly to users - process the error, log it on your server.
+            if ($isAjax) {
+                http_response_code(500);
+            }
 
-          $response = [
-              "status" => false,
-              "message" => 'Sorry, something went wrong. Please try again later.'
-          ];
-      } else {
-          $response = [
-              "status" => true,
-              "message" => 'Message sent! Thanks for contacting us.'
-          ];
-      }
-  } else {
-      $response = [
-          "status" => false,
-          "message" => 'Invalid email address, message ignored.'
-      ];
-  }
+            $response = [
+                "status" => false,
+                "message" => 'Sorry, something went wrong. Please try again later.'
+            ];
+        } else {
+            $response = [
+                "status" => true,
+                "message" => 'Message sent! Thanks for contacting us.'
+            ];
+        }
+    } else {
+        $response = [
+            "status" => false,
+            "message" => 'Invalid email address, message ignored.'
+        ];
+    }
 
-  if ($isAjax) {
-      header('Content-type:application/json;charset=utf-8');
-      echo json_encode($response);
-      exit();
-  }
+    if ($isAjax) {
+        header('Content-type:application/json;charset=utf-8');
+        echo json_encode($response);
+        exit();
+    }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact form</title>
+</head>
+<body>
+<h1>Contact us</h1>
 <h2 id="status-message"><?php if (isset($response)) {
-  echo $response['message'];
-                      }?></h2>
+    echo $response['message'];
+                        }?></h2>
 <form method="POST" id="contact-form">
-  <label for="name">Name: <input type="text" name="name" id="name"></label><br>
-  <label for="email">Email address: <input type="email" name="email" id="email"></label><br>
-  <label for="message">Message: <textarea name="text-message" id="message" rows="8" cols="20"></textarea></label><br>
-  <input type="submit" value="Send">
+    <label for="name">Name: <input type="text" name="name" id="name"></label><br>
+    <label for="email">Email address: <input type="email" name="email" id="email"></label><br>
+    <label for="message">Message: <textarea name="message" id="message" rows="8" cols="20"></textarea></label><br>
+    <label for="dept">Send query to department:</label>
+
+    <input type="submit" value="Send">
 </form>
 
 <script type="application/javascript">
-  const form = document.getElementById("contact-form")
+    const form = document.getElementById("contact-form")
 
-  function email(data) {
-      const message = document.getElementById("status-message")
-      fetch("", {
-          method: "POST",
-          body: data,
-          headers: {
-             'X-Requested-With' : 'XMLHttpRequest'
-          }
-      })
-          .then(response => response.json())
-          .then(response => {message.innerHTML = response.message})
-          .catch(error => {
-              error.json().then(response => {
-                  message.innerHTML = response.message
-              })
-          })
-  }
+    function email(data) {
+        const message = document.getElementById("status-message")
+        fetch("", {
+            method: "POST",
+            body: data,
+            headers: {
+               'X-Requested-With' : 'XMLHttpRequest'
+            }
+        })
+            .then(response => response.json())
+            .then(response => {message.innerHTML = response.message})
+            .catch(error => {
+                error.json().then(response => {
+                    message.innerHTML = response.message
+                })
+            })
+    }
 
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+    const submitEvent = form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-    const formData = new FormData(form);
+        const formData = new FormData(form);
 
-    email(formData);
-  })
+        email(formData);
+    })
 </script>
+  </body>
+  </html>
