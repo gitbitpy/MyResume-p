@@ -84,7 +84,6 @@ if (array_key_exists('email', $_POST)) {
         <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
         <span class="hide">Message field is required</span>
     </div>
-
     <div class="my-3">
         <div class="loading-submit">Loading</div>
         <div class="form-error-message"><?php if (isset($response)) {echo $response['message'];}?></div>
@@ -138,7 +137,7 @@ const validateInputs = () => {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    document.querySelector('.loading-submit').classList.add('d-block');
+    form.querySelector('.loading-submit').classList.add('d-block');
     
     // Flag to determine if validation should occur
     shouldValidate = true;
