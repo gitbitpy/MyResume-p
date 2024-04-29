@@ -1246,7 +1246,7 @@ height:clamp(300px,45vh,500px);
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
+.contact .form-error-message br+br {
   margin-top: 25px;
 }
 
