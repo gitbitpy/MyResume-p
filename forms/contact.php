@@ -65,7 +65,7 @@ if (array_key_exists('email', $_POST)) {
     }
 }
 ?>
-<form  method="post" role="form" class="php-email-form" id="contact-form">
+<form  method="post" role="form" id="contact-form" class="php-email-form" >
     <div class="row">
          <div class="col-md-6 form-group">
             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>

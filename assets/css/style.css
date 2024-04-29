@@ -1259,7 +1259,7 @@ height:clamp(300px,45vh,500px);
   font-weight: 600;
 }
 
-.loading-submit {
+.contact .loading-submit {
   display: none;
   background: #fff;
   text-align: center;
