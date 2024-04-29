@@ -19,7 +19,7 @@ if (array_key_exists('email', $_POST)) {
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     //Create a new PHPMailer instance
     $mail = new PHPMailer(true);
-    $mail->setFrom('hi@ahmadusman.com');
+    $mail->setFrom('hi@ahmadusman.com', 'Enquiry-Ahmad Usman');
     $mail->addAddress('mirzaconnects@gmail.com');    
     //Put the submitter's address in a reply-to header
     //This will fail if the address provided is invalid,
@@ -87,8 +87,12 @@ if (array_key_exists('email', $_POST)) {
     </div>
     <div class="my-3">
         <div class="loading">Loading</div>
-        <div class="error-message"></div>
-        <div class="sent-message">Your message has been sent. Thank you!</div>
+        <div class="error-message"><?php if (isset($response)) {
+    echo $response['message'];
+                        }?></div>
+        <div class="sent-message"><?php if (isset($response)) {
+    echo $response['message'];
+                        }?>Your message has been sent. Thank you!</div>
     </div>
     <div class="text-center"><button type="submit">Send Message</button></div>
 </form>
