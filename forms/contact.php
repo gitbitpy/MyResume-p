@@ -101,7 +101,7 @@ if (array_key_exists('email', $_POST)) {
 
     function email(data) {
         const message = document.getElementById("status-message")
-        fetch("", {
+        fetch("forms/contact.php", {
             method: "POST",
             body: data,
             headers: {
