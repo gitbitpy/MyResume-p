@@ -87,7 +87,9 @@ if (array_key_exists('email', $_POST)) {
     <div class="my-3">
         <div class="loading-submit">Loading</div>
         <div class="form-error-message"><?php if (isset($response)) {echo $response['message'];}?></div>
-        <div class="form-sent-message"><?php if (isset($response)) {echo $response['message'];}?></div>
+        <div class="form-sent-message"><?php if (isset($response)) {echo $response['message'];}
+        var_dump ($response['message']);?>
+        </div>
     </div>
     <div class="text-center"><button type="submit">Send Message</button></div>
 </form>
@@ -138,6 +140,8 @@ const validateInputs = () => {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     form.querySelector('.loading-submit').classList.add('d-block');
+    form.querySelector('.form-sent-message').classList.remove('d-block');
+    form.querySelector('.form-error-message').classList.remove('d-block');
     
     // Flag to determine if validation should occur
     shouldValidate = true;
