@@ -86,8 +86,7 @@ if (array_key_exists('email', $_POST)) {
         <span class="hide">Message field is required</span>
     </div>
     <div class="text-center"><button type="submit">Send Message</button></div>
-</form>
-<div class="my-3">
+    <div class="my-3">
         <div class="loading-submit">Loading</div>
         <div class="form-error-message"><?php if (isset($response)) {
     echo $response['message'];
@@ -96,6 +95,8 @@ if (array_key_exists('email', $_POST)) {
     echo $response['message'];
                         }?>Your message has been sent. Thank you!</div>
     </div>
+</form>
+
 
 <script type="application/javascript">
 const form = document.querySelector("form[class='php-email-form']");
