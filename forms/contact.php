@@ -141,7 +141,7 @@ form.addEventListener("submit", (e) => {
     form.querySelector('.loading').classList.add('d-block');
     
     // Flag to determine if validation should occur
-    
+    shouldValidate = true;
     // Validate form inputs
     validateInputs();
     
