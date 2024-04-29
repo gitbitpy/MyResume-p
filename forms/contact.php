@@ -17,26 +17,10 @@ if (array_key_exists('email', $_POST)) {
     require './vendor/autoload.php';
     $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-
     //Create a new PHPMailer instance
     $mail = new PHPMailer(true);
-    //Send using SMTP to localhost (faster and safer than using mail()) – requires a local mail server
-
-        //Set who the message is to be sent from
-        $mail->setFrom('hi@ahmadusman.com');
-
-    //Use a fixed address in your own domain as the from address
-    //**DO NOT** use the submitter's address here as it will be forgery
-    //and will cause your messages to fail SPF checks
-    //Choose who the message should be sent to
-    //You don't have to use a <select> like in this example, you can simply use a fixed address
-    //the important thing is *not* to trust an email address submitted from the form directly,
-    //as an attacker can substitute their own and try to use your form to send spam
-    //Validate address selection before trying to use it
-
-        //Fall back to a fixed address if dept selection is invalid or missing
-        $mail->addAddress('mirzaconnects@gmail.com');
-    
+    $mail->setFrom('hi@ahmadusman.com');
+    $mail->addAddress('mirzaconnects@gmail.com');    
     //Put the submitter's address in a reply-to header
     //This will fail if the address provided is invalid,
     //in which case we should ignore the whole request
@@ -46,30 +30,29 @@ if (array_key_exists('email', $_POST)) {
         $mail->isHTML(false);
         //Build a simple message body
         $mail->Body = <<<EOT
-Email: {$_POST['email']}
-Name: {$_POST['name']}
-Message: {$_POST['message']}
-EOT;
-
-        //Send the message, check for errors
+            Email: {$_POST['email']}
+            Name: {$_POST['name']}
+            Subject: {$_POST['subject']}
+            Message: {$_POST['message']}
+            EOT;
         if (!$mail->send()) {
             //The reason for failing to send will be in $mail->ErrorInfo
             //but it's unsafe to display errors directly to users - process the error, log it on your server.
             if ($isAjax) {
                 http_response_code(500);
-            }
+                }
 
-            $response = [
-                "status" => false,
-                "message" => 'Sorry, something went wrong. Please try again later.'
-            ];
+                $response = [
+                    "status" => false,
+                    "message" => 'Sorry, something went wrong. Please try again later.'
+                ];
+            } else {
+                $response = [
+                    "status" => true,
+                    "message" => 'Message sent! Thanks for contacting us.'
+                ];
+            }
         } else {
-            $response = [
-                "status" => true,
-                "message" => 'Message sent! Thanks for contacting us.'
-            ];
-        }
-    } else {
         $response = [
             "status" => false,
             "message" => 'Invalid email address, message ignored.'
@@ -83,25 +66,35 @@ EOT;
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact form</title>
-</head>
-<body>
-<h1>Contact us</h1>
-<h2 id="status-message"><?php if (isset($response)) {
+<h3 id="status-message"><?php if (isset($response)) {
     echo $response['message'];
                         }?></h2>
-<form method="POST" id="contact-form">
-    <label for="name">Name: <input type="text" name="name" id="name"></label><br>
-    <label for="email">Email address: <input type="email" name="email" id="email"></label><br>
-    <label for="message">Message: <textarea name="message" id="message" rows="8" cols="20"></textarea></label><br>
-    <label for="dept">Send query to department:</label>
-
-    <input type="submit" value="Send">
-</form>
+<form  method="post" role="form" class="php-email-form" id="contact-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <span class="hide">Your name is required</span>
+                </div>
+                <div class="col-md-6 form-group mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  <span class="hide">Your valid email is required</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <span class="hide">Subject Field is required</span>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                <span class="hide">Message field is required</span>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
 
 <script type="application/javascript">
     const form = document.getElementById("contact-form")
@@ -133,5 +126,3 @@ EOT;
         email(formData);
     })
 </script>
-  </body>
-  </html>
