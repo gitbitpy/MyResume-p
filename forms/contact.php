@@ -19,7 +19,7 @@ if (array_key_exists('email', $_POST)) {
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 
     //Create a new PHPMailer instance
-    $mail = new PHPMailer();
+    $mail = new PHPMailer(true);
     //Send using SMTP to localhost (faster and safer than using mail()) – requires a local mail server
 
         //Set who the message is to be sent from
