@@ -175,6 +175,6 @@ form.addEventListener("submit", (e) => {
         });
     }
 });
-shouldValidate = true;
+shouldValidate = false;
 inputFields.forEach((input) => input.addEventListener("input", validateInputs));
 </script>
