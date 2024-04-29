@@ -4,7 +4,7 @@
       <!-- ======= Hero Section ======= -->
       <section id="hero" class="d-flex flex-column justify-content-center">
         <div class="container hero-container" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-lg-8">
+          <div class="col-lg-7">
             <p class="text-l">Hey, I am</p>
             <h1>Ahmad Usman</h1>
             <p><span class="typed" data-typed-items="Web Developer, IT Enthusiast, Engineer"></span></p>
@@ -12,7 +12,7 @@
               <a href="https://www.linkedin.com/in/ahmad-usman-13a897191/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
-          <div class="col-lg-4 hero-img-wrap"><img src="assets/img/hero-img.png" class="img-fluid" alt=""></div>
+          <div class="col-lg-5 hero-img-wrap"><img src="assets/img/hero-img.png" class="img-fluid" alt=""></div>
         </div>
       </section><!-- End Hero -->
 
@@ -40,15 +40,15 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>ahmadusman.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+44 7435 8131 69</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>London, UK</span></li>
+                  <li><i class="bi bi-globe-central-south-asia"></i> <strong>Website:</strong> <span>ahmadusman.com</span></li>
+                  <li><i class="bi bi-telephone-fill"></i> <strong>Phone:</strong> <span>+44 7435 8131 69</span></li>
+                  <li><i class="bi bi-geo-alt-fill"></i> <strong>City:</strong> <span>London, UK</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>hi@ahmadusman.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Social Handle</strong> <span> Go to Linkedin profile </span></li>
+                  <li><i class="bi bi-envelope-fill"></i><strong>Email:</strong> <span>hi@ahmadusman.com</span></li>
+                  <li><i class="bi bi-linkedin"></i><strong>Social Handle</strong> <span> Go to Linkedin profile </span></li>
                 </ul>
               </div>
             </div>
