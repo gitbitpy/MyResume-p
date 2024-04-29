@@ -66,38 +66,35 @@ if (array_key_exists('email', $_POST)) {
     }
 }
 ?>
-<h3 id="status-message"><?php if (isset($response)) {
-    echo $response['message'];
-                        }?></h2>
 <form  method="post" role="form" class="php-email-form" id="contact-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                  <span class="hide">Your name is required</span>
-                </div>
-                <div class="col-md-6 form-group mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                  <span class="hide">Your valid email is required</span>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                <span class="hide">Subject Field is required</span>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                <span class="hide">Message field is required</span>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+    <div class="row">
+         <div class="col-md-6 form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            <span class="hide">Your name is required</span>
+        </div>
+        <div class="col-md-6 form-group mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            <span class="hide">Your valid email is required</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+        <span class="hide">Subject Field is required</span>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        <span class="hide">Message field is required</span>
+    </div>
+    <div class="my-3">
+        <div class="loading">Loading</div>
+        <div class="error-message"></div>
+        <div class="sent-message">Your message has been sent. Thank you!</div>
+    </div>
+    <div class="text-center"><button type="submit">Send Message</button></div>
+</form>
 
 <script type="application/javascript">
-    const form = document.querySelector("form[class='php-email-form']");
+const form = document.querySelector("form[class='php-email-form']");
 const nameInput = document.querySelector("input[name='name']");
 const emailInput = document.querySelector("input[name='email']");
 const subjectInput = document.querySelector("input[name='subject']");
@@ -122,9 +119,10 @@ const isValidEmail = (email) => {
 };*/
 
 let isFormValid = false;
+let shouldValidate = false;
 
 const validateInputs = () => {
-
+    if (!shouldValidate) return;
   isFormValid = true;
   inputFields.forEach((input) => {
     input.classList.remove("invalid");
