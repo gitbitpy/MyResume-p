@@ -279,7 +279,7 @@
         <div class="portfolio-wrap" >
             <div class="portfolio-info">
                 <div class="icon-flex-title">
-                    <img src="assets/img/portfolio/trends Capture.jpg" alt="" class="portfolio-icon">
+                    <img src="assets/img/portfolio/trends-Capture.jpg" alt="" class="portfolio-icon">
                     <h4>Trendsmena</h4>
                 </div>
                 <p>International News Media Dubai</p>
@@ -471,7 +471,9 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
             
-        
+            <?php 
+            include  'forms/contact.php';
+            ?>
 
 <!--            <form  method="post" role="form" class="php-email-form">
               <div class="row">
