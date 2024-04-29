@@ -1250,7 +1250,7 @@ height:clamp(300px,45vh,500px);
   margin-top: 25px;
 }
 
-.contact .form-sent-message {
+.form-sent-message {
   display: none;
   color: #fff;
   background: #18d26e;
@@ -1259,14 +1259,14 @@ height:clamp(300px,45vh,500px);
   font-weight: 600;
 }
 
-.contact .form-response .loading-submit {
+.loading-submit {
   display: none;
   background: #fff;
   text-align: center;
   padding: 15px;
 }
 
-.contact .loading-submit:before {
+.loading-submit:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
