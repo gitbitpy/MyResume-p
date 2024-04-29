@@ -161,21 +161,21 @@ form.addEventListener("submit", (e) => {
         .then(response => {
             if (response.ok) {
                 // Response is OK, show success message
-                document.querySelector('.form-sent-message').classList.add('d-block');
-                document.querySelector('.loading-submit').classList.remove('d-block');
+                form.querySelector('.form-sent-message').classList.add('d-block');
+                form.querySelector('.loading-submit').classList.remove('d-block');
                 form.reset(); // Reset the form
             } else {
                 // Response is not OK, show error message
                 throw new Error('Failed to submit form');
-                document.querySelector('.loading-submit').classList.remove('d-block');
+                form.querySelector('.loading-submit').classList.remove('d-block');
             }
         })
         .catch(error => {
             // Handle errors
             console.error('Error:', error);
-            document.querySelector('.form-error-message').textContent = 'Failed to submit form';
-            document.querySelector('.form-error-message').classList.add('d-block');
-            document.querySelector('.loading-submit').classList.remove('d-block');
+            form.querySelector('.form-error-message').textContent = 'Failed to submit form';
+            form.querySelector('.form-error-message').classList.add('d-block');
+            form.querySelector('.loading-submit').classList.remove('d-block');
         });
     }
 });
