@@ -85,7 +85,7 @@ if (array_key_exists('email', $_POST)) {
         <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
         <span class="hide">Message field is required</span>
     </div>
-    <div class="text-center"><button type="submit">Send Message</button></div>
+
     <div class="my-3">
         <div class="loading-submit">Loading</div>
         <div class="form-error-message"><?php if (isset($response)) {
@@ -95,6 +95,7 @@ if (array_key_exists('email', $_POST)) {
     echo $response['message'];
                         }?>Your message has been sent. Thank you!</div>
     </div>
+    <div class="text-center"><button type="submit">Send Message</button></div>
 </form>
 
 
