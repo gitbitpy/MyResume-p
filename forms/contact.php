@@ -85,7 +85,9 @@ if (array_key_exists('email', $_POST)) {
         <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
         <span class="hide">Message field is required</span>
     </div>
-    <div class="my-3">
+    <div class="text-center"><button type="submit">Send Message</button></div>
+</form>
+<div class="my-3">
         <div class="loading">Loading</div>
         <div class="error-message"><?php if (isset($response)) {
     echo $response['message'];
@@ -94,8 +96,6 @@ if (array_key_exists('email', $_POST)) {
     echo $response['message'];
                         }?>Your message has been sent. Thank you!</div>
     </div>
-    <div class="text-center"><button type="submit">Send Message</button></div>
-</form>
 
 <script type="application/javascript">
 const form = document.querySelector("form[class='php-email-form']");
@@ -142,7 +142,7 @@ const validateInputs = () => {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    form.querySelector('.loading').classList.add('d-block');
+    document.querySelector('.loading').classList.add('d-block');
     
     // Flag to determine if validation should occur
     shouldValidate = true;
@@ -161,21 +161,21 @@ form.addEventListener("submit", (e) => {
         .then(response => {
             if (response.ok) {
                 // Response is OK, show success message
-                form.querySelector('.sent-message').classList.add('d-block');
-                form.querySelector('.loading').classList.remove('d-block');
+                document.querySelector('.sent-message').classList.add('d-block');
+                document.querySelector('.loading').classList.remove('d-block');
                 form.reset(); // Reset the form
             } else {
                 // Response is not OK, show error message
                 throw new Error('Failed to submit form');
-                form.querySelector('.loading').classList.remove('d-block');
+                document.querySelector('.loading').classList.remove('d-block');
             }
         })
         .catch(error => {
             // Handle errors
             console.error('Error:', error);
-            form.querySelector('.error-message').textContent = 'Failed to submit form';
-            form.querySelector('.error-message').classList.add('d-block');
-            form.querySelector('.loading').classList.remove('d-block');
+            document.querySelector('.error-message').textContent = 'Failed to submit form';
+            document.querySelector('.error-message').classList.add('d-block');
+            document.querySelector('.loading').classList.remove('d-block');
         });
     }
 });
