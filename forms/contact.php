@@ -25,7 +25,7 @@ if (array_key_exists('email', $_POST)) {
     //This will fail if the address provided is invalid,
     //in which case we should ignore the whole request
     if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
-        $mail->Subject = 'PHPMailer contact form';
+        $mail->Subject = $_POST['subject'];
         //Keep it simple - don't use HTML
         $mail->isHTML(false);
         //Build a simple message body
@@ -36,7 +36,6 @@ if (array_key_exists('email', $_POST)) {
             Message: {$_POST['message']}
             EOT;
         if (!$mail->send()) {
-            //The reason for failing to send will be in $mail->ErrorInfo
             //but it's unsafe to display errors directly to users - process the error, log it on your server.
             if ($isAjax) {
                 http_response_code(500);
@@ -88,12 +87,8 @@ if (array_key_exists('email', $_POST)) {
 
     <div class="my-3">
         <div class="loading-submit">Loading</div>
-        <div class="form-error-message"><?php if (isset($response)) {
-    echo $response['message'];
-                        }?></div>
-        <div class="form-sent-message"><?php if (isset($response)) {
-    echo $response['message'];
-                        }?>Your message has been sent. Thank you!</div>
+        <div class="form-error-message"><?php if (isset($response)) {echo $response['message'];}?></div>
+        <div class="form-sent-message"><?php if (isset($response)) {echo $response['message'];}?></div>
     </div>
     <div class="text-center"><button type="submit">Send Message</button></div>
 </form>
@@ -105,7 +100,6 @@ const nameInput = document.querySelector("input[name='name']");
 const emailInput = document.querySelector("input[name='email']");
 const subjectInput = document.querySelector("input[name='subject']");
 const messageInput = document.querySelector("textarea[name='message']");
-
 nameInput.isValid = () => !!nameInput.value;
 emailInput.isValid = () => isValidEmail(emailInput.value);
 subjectInput.isValid = () => !!subjectInput.value;
@@ -156,7 +150,7 @@ form.addEventListener("submit", (e) => {
         const data = new FormData(form);
         
         // Perform AJAX request
-        fetch('forms/contact.php', {
+        fetch('./forms/contact.php', {
             method: 'POST',
             body: data
         })
@@ -175,7 +169,6 @@ form.addEventListener("submit", (e) => {
         .catch(error => {
             // Handle errors
             console.error('Error:', error);
-            form.querySelector('.form-error-message').textContent = 'Failed to submit form';
             form.querySelector('.form-error-message').classList.add('d-block');
             form.querySelector('.loading-submit').classList.remove('d-block');
         });
