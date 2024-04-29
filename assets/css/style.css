@@ -1246,7 +1246,7 @@ height:clamp(300px,45vh,500px);
   font-weight: 600;
 }
 
-.contact .form-error-message br+br {
+.contact .form-response .form-error-message br+br {
   margin-top: 25px;
 }
 
@@ -1259,7 +1259,7 @@ height:clamp(300px,45vh,500px);
   font-weight: 600;
 }
 
-.contact .loading-submit {
+.contact .form-response .loading-submit {
   display: none;
   background: #fff;
   text-align: center;
