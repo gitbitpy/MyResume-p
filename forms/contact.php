@@ -152,7 +152,7 @@ form.addEventListener("submit", (e) => {
         const data = new FormData(form);
         
         // Perform AJAX request
-        fetch('contact.php', {
+        fetch('forms/contact.php', {
             method: 'POST',
             body: data
         })
@@ -165,6 +165,7 @@ form.addEventListener("submit", (e) => {
             } else {
                 // Response is not OK, show error message
                 throw new Error('Failed to submit form');
+                form.querySelector('.loading').classList.remove('d-block');
             }
         })
         .catch(error => {
@@ -172,6 +173,7 @@ form.addEventListener("submit", (e) => {
             console.error('Error:', error);
             form.querySelector('.error-message').textContent = 'Failed to submit form';
             form.querySelector('.error-message').classList.add('d-block');
+            form.querySelector('.loading').classList.remove('d-block');
         });
     }
 });
