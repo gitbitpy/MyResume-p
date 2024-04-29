@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 if (array_key_exists('email', $_POST)) {
    
     date_default_timezone_set('Etc/UTC');
-    require './vendor/autoload.php';
+    require '../vendor/autoload.php';
     $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     //Create a new PHPMailer instance
