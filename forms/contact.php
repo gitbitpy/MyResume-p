@@ -87,7 +87,7 @@ if (array_key_exists('email', $_POST)) {
     </div>
     <div class="text-center"><button type="submit">Send Message</button></div>
 </form>
-<div class="my-3 form-response">
+<div class="my-3">
         <div class="loading-submit">Loading</div>
         <div class="form-error-message"><?php if (isset($response)) {
     echo $response['message'];
