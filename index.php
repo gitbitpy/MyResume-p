@@ -279,7 +279,7 @@
         <div class="portfolio-wrap" >
             <div class="portfolio-info">
                 <div class="icon-flex-title">
-                    <img src="assets/img/portfolio/trends-capture.jpg" alt="trendsmena" class="portfolio-icon">
+                    <img src="assets/img/portfolio/overnache_logo-removebg-preview.png" alt="trendsmena" class="portfolio-icon">
                     <h4>Trendsmena</h4>
                 </div>
                 <p>International News Media Dubai</p>
