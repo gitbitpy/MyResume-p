@@ -450,7 +450,7 @@
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location</h4>
-                <p>11 D Minster Road London</p>
+                <p>Camden London</p>
               </div>
 
               <div class="email">
