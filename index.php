@@ -41,7 +41,7 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-globe-central-south-asia"></i> <strong>Website:</strong> <span>ahmadusman.com</span></li>
-                  <li><i class="bi bi-telephone-fill"></i> <strong>Phone:</strong> <span>+44 7435 8131 69</span></li>
+                
                   <li><i class="bi bi-geo-alt-fill"></i> <strong>City:</strong> <span>London, UK</span></li>
                 </ul>
               </div>
