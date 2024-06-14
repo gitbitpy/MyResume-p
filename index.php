@@ -462,7 +462,7 @@
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call</h4>
-                <p>+44 7435 8131 69</p>
+                <p>[Hidden Content]</p>
               </div>
 
             </div>
