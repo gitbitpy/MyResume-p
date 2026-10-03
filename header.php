@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script>
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      document.documentElement.dataset.theme = savedTheme;
+    }
+  </script>
 
   <title>Ahmad Usman's Portfolio</title>
   <meta content="" name="description">
@@ -42,7 +48,6 @@
       <ul>
         <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
         <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
         <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
         <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
         <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
@@ -50,3 +55,8 @@
     </nav><!-- .nav-menu -->
 
   </header><!-- End Header -->
+
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="true">
+    <i class="bi bi-sun-fill" aria-hidden="true"></i>
+    <span>Light</span>
+  </button>
