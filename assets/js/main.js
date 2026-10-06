@@ -35,6 +35,28 @@
   }
 
   /**
+   * Theme toggle
+   */
+  const themeToggle = select('#theme-toggle')
+  if (themeToggle) {
+    const updateThemeToggle = () => {
+      const isDark = document.documentElement.dataset.theme !== 'light'
+      themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`)
+      themeToggle.setAttribute('aria-pressed', String(isDark))
+      themeToggle.querySelector('i').className = `bi ${isDark ? 'bi-sun-fill' : 'bi-moon-stars-fill'}`
+      themeToggle.querySelector('span').textContent = isDark ? 'Light' : 'Dark'
+    }
+
+    updateThemeToggle()
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'
+      document.documentElement.dataset.theme = nextTheme
+      localStorage.setItem('portfolio-theme', nextTheme)
+      updateThemeToggle()
+    })
+  }
+
+  /**
    * Navbar links active state on scroll
    */
   let navbarlinks = select('#navbar .scrollto', true)
@@ -146,23 +168,6 @@
   }
 
   /**
-   * Skills animation
-   */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
-  }
-
-  /**
    * Porfolio isotope and filter
    */
   window.addEventListener('load', () => {
@@ -244,10 +249,12 @@ scrollImages.forEach(scrollImg => {
    */
   window.addEventListener('load', () => {
     AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
+      duration: 900,
+      easing: 'ease-out-cubic',
+      offset: 80,
       once: true,
-      mirror: false
+      mirror: false,
+      disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
     })
   });
 

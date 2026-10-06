@@ -1,5 +1,8 @@
 
- <?php include 'header.php'; ?>
+<?php
+header('Cache-Control: no-cache, must-revalidate');
+include 'header.php';
+?>
 
       <!-- ======= Hero Section ======= -->
       <section id="hero" class="d-flex flex-column justify-content-center">
@@ -25,17 +28,14 @@
 
         <div class="section-title">
           <h2>About Me</h2>
-          <p>Hey there, if you've found your way to here, we would definitely be able to create something exceptional together. I'm all about crafting exceptional digital experiences, and with my background in WordPress development and IT administration, I am all geared up to bring ideas into reality. Beyond the tech stuff, I pride myself on being approachable and collaborative.</p>
+          <p>I’m a technology professional who enjoys turning complex ideas into practical, reliable digital experiences. My work spans web development, IT systems, and problem-solving, with a focus on thoughtful solutions that work well for the people who use them.</p>
         </div>
 
         <div class="row">
-          <div class="col-lg-12">
-
-          </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Web Developer / Wordpress Developer</h3>
+            <h3>Developer &amp; Technology Professional</h3>
             <p class="fst-italic">
-              Dynanmic all the way
+              Curious by nature. Focused on useful, lasting solutions.
             </p>
             <div class="row">
               <div class="col-lg-6">
@@ -48,12 +48,12 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-envelope-fill"></i><strong>Email:</strong> <span>hi@ahmadusman.com</span></li>
-                  <li><i class="bi bi-linkedin"></i><strong>Social Handle</strong> <span> Go to Linkedin profile </span></li>
+                  <li><i class="bi bi-linkedin"></i><strong>Social:</strong> <span>LinkedIn</span></li>
                 </ul>
               </div>
             </div>
             <p>
-              Let's team up, brainstorm, and make waves in the digital realm together. Get ready to dive into the magical world of possibilities!
+              I value clear communication, collaboration, and continuous learning. Whether you have a website to build, a system to improve, or a new idea to explore, I’d be glad to hear from you.
             </p>
           </div>
         </div>
@@ -69,143 +69,61 @@
 
         <div class="section-title">
           <h2>Skills</h2>
-          <p>Proficient in WordPress Frontend/Backend development, database management, data backup and disaster recovery. Experienced in CCTV, POS, Azure cloud, Network and Linux/Windows Server administration. Provided IT solutions as a Freelancer.</p>
+          <p>A practical mix of web development, cloud infrastructure, and hands-on IT experience—from building websites to supporting the systems and networks behind them.</p>
         </div>
 
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">HTML/CSS<i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">Apache/NGINX<i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">WordPress/CMS <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-
-
+        <div class="row skills-grid">
+          <div class="col-lg-4 col-md-6">
+            <article class="skill-group">
+              <h3><i class="bi bi-code-slash" aria-hidden="true"></i> Web Development</h3>
+              <ul class="skill-list">
+                <li>HTML &amp; CSS</li>
+                <li>JavaScript &amp; PHP</li>
+                <li>WordPress &amp; CMS</li>
+                <li>MySQL</li>
+                <li>Git</li>
+              </ul>
+            </article>
           </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">Javascript/PHP<i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-            <div class="progress">
-              <span class="skill">MySQL <i class="val">65%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-
-            <div class="progress">
-              <span class="skill">Git VCS<i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
+          <div class="col-lg-4 col-md-6">
+            <article class="skill-group">
+              <h3><i class="bi bi-cloud" aria-hidden="true"></i> Cloud &amp; Infrastructure</h3>
+              <ul class="skill-list">
+                <li>Microsoft Azure</li>
+                <li>Linux &amp; Windows Server</li>
+                <li>Apache &amp; NGINX</li>
+                <li>Backup &amp; Disaster Recovery</li>
+              </ul>
+            </article>
           </div>
-
+          <div class="col-lg-4 col-md-6">
+            <article class="skill-group">
+              <h3><i class="bi bi-hdd-network" aria-hidden="true"></i> IT Operations</h3>
+              <ul class="skill-list">
+                <li>Network Administration</li>
+                <li>POS Systems</li>
+                <li>CCTV Systems</li>
+                <li>IT Support &amp; Troubleshooting</li>
+              </ul>
+            </article>
+          </div>
         </div>
 
       </div>
     </section><!-- End Skills Section -->
 
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Resume</h2>
-          <p>Versatile and results-driven IT professional with expertise in WordPress development, database management, and network administration, seeking to leverage skills and experience to drive innovation and excellence in a dynamic tech environment.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-8">
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Bachelor's of Electrical Engineering</h4>
-              <h5>2014 - 2021</h5>
-              <p><em>University of Engineering and Technology, Taxila</em></p>
-              <p>My Major was Electrical Power Generation and Minor was Communication Systems. The journey entitled me with core enegineering skills like critical thinking, project management and problem solving</p>
-            </div>
-           
-          </div>
-          <div class="col-lg-8">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Web Devleoper and SEO Expert</h4>
-              <h5>2023 - 2024
-              </h5>
-              <p><em>Hutt Creative Studio, New Zealand (Remote)</em></p>
-              <ul>
-                <li>Developing Dynamic and Accessible Portfolio galleries and making them fully responsive and interactive.</li>
-                <li>Configuring payment gateways ensuring seamless payments in WooCommerce for the users. </li>
-                <li>Applying SEO techniques by optimizing metadata, schema markup and website performance. </li>
-                <li>Utilizing web analytics tools to track performance metrics, analyze user behavior, and identify opportunities for optimization.</li>
-                <li>Customizing WordPress capabilities to align with the client's specific needs and preferences.</li>
-                <li>Conducting email campaigns to engage users and drive traffic to the website.</li>
-                <li>Documenting the procedures and process flows aiding in future troubleshooting and updates.</li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Network Associate</h4>
-              <h5>2022 - 2023</h5>
-              <p><em>PROTECHBYTE Pakistan</em></p>
-              <ul>
-                <li>Implementing and installing Point of Sale (POS) terminals and configuring them</li>
-                <li>Troubleshooting operational connectivity of the POS terminals with the database server.</li>
-                <li>Assisting in customization of POS software to the clients’ needs.</li>
-                <li>Configuring and setting up backup to on-premises and cloud storage.</li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Assistant Installation Engineer</h4>
-              <h5>2021 - 2022</h5>
-              <p><em>Globe Wise Solutions Pakistan</em></p>
-              <ul>
-                <li>Collaborating with Engineering team in conducting building surveys for the security system opportunities.</li>
-                <li>IP/Analogue CCTV installation and configuration.</li>
-                <li>Documenting all the technical aspects of the installation and testing process.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio section-bg">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
 
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
           <h2>Portfolio</h2>
           <p></p>
         </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="row portfolio-container">
 
-          <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="zoom-in" data-aos-delay="100">
             <a href="portfolio-details-alarazi.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
                 <div class="portfolio-wrap" >
                     <div class="portfolio-info">
@@ -222,7 +140,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="zoom-in" data-aos-delay="200">
           <a href="portfolio-details-head.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
               <div class="portfolio-wrap" >
                   <div class="portfolio-info">
@@ -240,7 +158,7 @@
           </a>
       </div>
 
-      <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="zoom-in" data-aos-delay="300">
         <a href="portfolio-details-story.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
             <div class="portfolio-wrap" >
                 <div class="portfolio-info">
@@ -257,7 +175,7 @@
             </div>
         </a>
     </div>
-    <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="fade-up" data-aos-delay="200">
+    <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="zoom-in" data-aos-delay="100">
       <a href="portfolio-details-night.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
           <div class="portfolio-wrap" >
               <div class="portfolio-info">
@@ -274,7 +192,7 @@
           </div>
       </a>
   </div>
-  <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="fade-up" data-aos-delay="200">
+  <div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="zoom-in" data-aos-delay="200">
     <a href="portfolio-details-trends.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
         <div class="portfolio-wrap" >
             <div class="portfolio-info">
@@ -291,7 +209,7 @@
         </div>
     </a>
 </div>
-<div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="fade-up" data-aos-delay="200">
+<div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="zoom-in" data-aos-delay="300">
   <a href="portfolio-details-ruchika.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
       <div class="portfolio-wrap" >
           <div class="portfolio-info">
@@ -308,7 +226,7 @@
       </div>
   </a>
 </div>
-<div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="fade-up" data-aos-delay="200">
+<div class="col-lg-6 col-md-12 portfolio-item filter-dir" data-aos="zoom-in" data-aos-delay="100">
   <a href="portfolio-details-protech.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details">
       <div class="portfolio-wrap" >
           <div class="portfolio-info">
@@ -334,9 +252,9 @@
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
 
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
           <h2>Services</h2>
           <p></p>
         </div>
@@ -356,7 +274,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-12 d-flex align-items-stretch service-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="col-lg-4 col-md-12 d-flex align-items-stretch service-card" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box iconbox-pink">
               <div class="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -390,9 +308,9 @@
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
 
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
           <h2>Testimonials</h2>
         </div>
 
